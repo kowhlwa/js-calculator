@@ -5,11 +5,25 @@
 
 figure {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    margin: 0px;
 }
 
 img {
     width: 60px;
     height: auto;
+}
+
+.title {
+    padding-right: 45%;
+}
+
+.calculator-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 30%;
+}
+
+.calculator-button-number, .calculator-button-operator, .calculator-button-clear {
+    flex-basis: 25%;
 }
