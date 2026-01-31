@@ -100,6 +100,9 @@ function updateVal(val) {
         alert("Don't try that again.");
     }
     updateDisplay();
+    if (val === "=") {
+        firstNumber = 0;
+    }
 }
 
 // Each digit button gets a function to update our globals
