@@ -9,6 +9,9 @@ const multiply = function(a, b) {
     return a * b;
 };
 const divide = function(a, b) {
+    if (b === 0) {
+        return "Don't try this nonsense again. You hear me?";
+    }
     return a / b;
 };
 
@@ -85,12 +88,16 @@ function updateVal(val) {
             secondNumber = 0;
         }
     } else {
-        if (+val) {
+        if (+val || +val === 0) {
             secondNumber = +val;
             which = "second";
         } else {
             operator = val;
         }
+    }
+    if (firstNumber === "Don't try this nonsense again. You hear me?" || firstNumber === "Infinity") {
+        clearDisplay();
+        alert("Don't try that again.");
     }
     updateDisplay();
 }
