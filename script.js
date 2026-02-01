@@ -1,6 +1,6 @@
 // basic functions in calculator
 const add = function(a, b) {
-    return a + b;
+    return +a + +b;
 };
 const subtract = function(a, b) {
     return a - b;
@@ -55,27 +55,23 @@ const operate = function(first, second, op) {
 
     }
 };
-// Funtion to update globals
+// Function to update globals
 function updateVal(val) {
-    if (val === "AC" || val === ".") {
+    if (val === "AC") {
         clearDisplay();
         return;
-    }
-    if (val === "=" && (which === "first" || which === "op")) {
+    } else if (val === "=" && (which === "first" || which === "op")) {
         return;
-    }
-    if (which === "first") {
-        if (+val || +val === 0) {
-            firstNumber *= 10;
-            firstNumber += +val;
+    } else if (which === "first") {
+        if (+val || +val === 0 || val === ".") {
+            firstNumber = addDigit(firstNumber, val);
         } else {
             operator = val;
             which = "op";
         }
     } else if (which === "second") {
-        if (+val || +val === 0) {
-            secondNumber *= 10;
-            secondNumber += +val;
+        if (+val || +val === 0 || val === ".") {
+            secondNumber = addDigit(secondNumber, val);
         } else {
             if (val !== "=") {
                 firstNumber = operate(firstNumber, secondNumber, operator);
@@ -91,6 +87,9 @@ function updateVal(val) {
         if (+val || +val === 0) {
             secondNumber = +val;
             which = "second";
+        } else if (val === ".") {
+            secondNumber = addDigit(secondNumber, val);
+            which = "second";
         } else {
             operator = val;
         }
@@ -103,6 +102,11 @@ function updateVal(val) {
     if (val === "=") {
         firstNumber = 0;
     }
+}
+
+// New mechanism to add digits with concatenation rather than mathematically.
+function addDigit(original, digit) {
+    return original !== 0 ? `${original}${digit}` : `${digit}`;
 }
 
 // Each digit button gets a function to update our globals
