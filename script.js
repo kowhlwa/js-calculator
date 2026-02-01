@@ -65,6 +65,10 @@ function updateVal(val) {
     } else if (which === "first") {
         if (+val || +val === 0 || val === ".") {
             firstNumber = addDigit(firstNumber, val);
+        } else if (val === "del") {
+            if (firstNumber != 0) {
+                firstNumber = firstNumber.substring(0, firstNumber.length - 1);
+            }
         } else {
             operator = val;
             which = "op";
@@ -72,6 +76,10 @@ function updateVal(val) {
     } else if (which === "second") {
         if (+val || +val === 0 || val === ".") {
             secondNumber = addDigit(secondNumber, val);
+        } else if (val === "del") {
+            if (secondNumber != 0) {
+                secondNumber = secondNumber.substring(0, secondNumber.length - 1);
+            }
         } else {
             if (val !== "=") {
                 firstNumber = operate(firstNumber, secondNumber, operator);
@@ -87,6 +95,9 @@ function updateVal(val) {
         if (+val || +val === 0) {
             secondNumber = +val;
             which = "second";
+        } else if (val === "del") {
+            operator = "";
+            which = "first";
         } else if (val === ".") {
             secondNumber = addDigit(secondNumber, val);
             which = "second";
