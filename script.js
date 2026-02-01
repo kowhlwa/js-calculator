@@ -64,6 +64,9 @@ function updateVal(val) {
         return;
     } else if (which === "first") {
         if (+val || +val === 0 || val === ".") {
+            if (val === "." && firstNumber.includes(".")) {
+                return;
+            }
             firstNumber = addDigit(firstNumber, val);
         } else if (val === "del") {
             if (firstNumber != 0) {
@@ -75,6 +78,9 @@ function updateVal(val) {
         }
     } else if (which === "second") {
         if (+val || +val === 0 || val === ".") {
+            if (val === "." && secondNumber.includes(".")) {
+                return;
+            }
             secondNumber = addDigit(secondNumber, val);
         } else if (val === "del") {
             if (secondNumber != 0) {
