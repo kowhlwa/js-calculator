@@ -70,7 +70,7 @@ function updateVal(val) {
             firstNumber = addDigit(firstNumber, val);
         } else if (val === "del") {
             if (firstNumber != 0) {
-                firstNumber = firstNumber.substring(0, firstNumber.length - 1);
+                firstNumber = +`${firstNumber}`.substring(0, firstNumber.length - 1);
             }
         } else {
             operator = val;
