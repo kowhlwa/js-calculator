@@ -84,7 +84,10 @@ function updateVal(val) {
             secondNumber = addDigit(secondNumber, val);
         } else if (val === "del") {
             if (secondNumber != 0) {
-                secondNumber = secondNumber.substring(0, secondNumber.length - 1);
+                secondNumber = +`${secondNumber}`.substring(0, secondNumber.length - 1);
+                if (secondNumber === 0) {
+                    which = "op";
+                }
             }
         } else {
             if (val !== "=") {
@@ -130,4 +133,22 @@ function addDigit(original, digit) {
 const digitButtons = document.querySelectorAll(".calculator-buttons *");
 digitButtons.forEach((digitButton) => {
     digitButton.addEventListener("click", (e) => updateVal(e.target.textContent));
+});
+
+// Adding keyboard support here
+const htmlSelected = document.querySelector("html");
+const supportedOperations = ["+", "-", "*", "."]
+htmlSelected.addEventListener("keydown", (e) => {
+    console.log(e.key);
+    if (+e.key || supportedOperations.includes(e.key)) {
+        updateVal(`${e.key}`);
+    } else if (e.key === "/") {
+        updateVal(`÷`);
+    } else if (e.key === "Backspace") {
+        updateVal("del");
+    } else if (e.key === "Enter") {
+        updateVal("=");
+    } else if (e.key === "c") {
+        updateVal("AC");
+    }
 });
