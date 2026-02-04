@@ -119,9 +119,9 @@ function updateVal(val) {
         alert("Don't try that again.");
     }
     updateDisplay();
-    if (val === "=") {
-        firstNumber = 0;
-    }
+    // if (val === "=") {
+    //     firstNumber = 0;
+    // }
 }
 
 // New mechanism to add digits with concatenation rather than mathematically.
@@ -142,6 +142,8 @@ htmlSelected.addEventListener("keydown", (e) => {
     console.log(e.key);
     if (+e.key || supportedOperations.includes(e.key)) {
         updateVal(`${e.key}`);
+    } else if (e.key === "0") {
+        updateVal("0");
     } else if (e.key === "/") {
         updateVal(`÷`);
     } else if (e.key === "Backspace") {
