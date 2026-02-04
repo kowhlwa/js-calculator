@@ -26,6 +26,25 @@ img {
 
 .calculator-button-number, .calculator-button-operator, .calculator-button-clear {
     flex-basis: 25%;
+    box-sizing: border-box;
+    background-color: rgba(51, 51, 51, 0.05);
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 10px 15px;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+}
+
+button:hover {
+    background-color: rgba(51, 51, 51, 0.10);
 }
 
 .calculator-body {
@@ -33,4 +52,19 @@ img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.calculator-display {
+    flex: 1 0 20px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    color: rgba(0, 0, 0, 0.85);
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    height: 20px;
+    width: 30%;
+    padding-left: 10px;
 }
